@@ -58,9 +58,9 @@ export default class Bubble extends React.Component {
   }
 
   renderTicks() {
-    const {currentMessage} = this.props;
+    const {currentMessage, position} = this.props;
     if (this.props.renderTicks) {
-        return this.props.renderTicks(currentMessage);
+        return this.props.renderTicks(currentMessage, position);
     }
     if (currentMessage.user._id !== this.props.user._id) {
         return;
@@ -121,7 +121,7 @@ export default class Bubble extends React.Component {
   render() {
     return (
       <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
-        <View style={[styles[this.props.position].wrapper, this.props.wrapperStyle[this.props.position], this.handleBubbleToNext(), this.handleBubbleToPrevious()]}>
+        <View style={[styles[this.props.position].wrapper, this.props.wrapperStyle[this.props.position]]}>
           <TouchableWithoutFeedback
             onLongPress={this.onLongPress}
             accessibilityTraits="text"
